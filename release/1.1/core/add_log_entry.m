@@ -1,0 +1,1 @@
+../../1.0/core/add_log_entry.m

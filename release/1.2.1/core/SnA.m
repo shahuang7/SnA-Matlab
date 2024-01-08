@@ -1,0 +1,1 @@
+/home/sna/release/1.2/core/SnA.m

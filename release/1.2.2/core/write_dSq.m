@@ -1,0 +1,1 @@
+/home/sna/release/1.2.1/core/write_dSq.m
