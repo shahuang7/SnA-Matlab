@@ -1,1 +1,1 @@
-/home/sna/release/1.0/core/read_dSq.m
+../../1.0/core/read_dSq.m

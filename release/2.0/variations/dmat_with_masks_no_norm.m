@@ -1,1 +1,1 @@
-/home/sna/release/1.0/variations/dmat_with_masks_no_norm.m
+../../1.0/variations/dmat_with_masks_no_norm.m

@@ -1,1 +1,1 @@
-/home/sna/release/1.0/core/calc_sqDist_blocks.m
+../../1.0/core/calc_sqDist_blocks.m
