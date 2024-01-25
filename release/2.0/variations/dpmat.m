@@ -1,1 +1,1 @@
-/home/sna/release/1.0/variations/dpmat.m
+../../1.0/variations/dpmat.m

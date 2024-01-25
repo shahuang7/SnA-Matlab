@@ -1,1 +1,1 @@
-/home/sna/release/1.0/variations/calc_dotProduct_blocks.m
+../../1.0/variations/calc_dotProduct_blocks.m

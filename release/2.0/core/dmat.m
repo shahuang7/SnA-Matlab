@@ -1,1 +1,1 @@
-/home/sna/release/1.0/core/dmat.m
+../../1.0/core/dmat.m

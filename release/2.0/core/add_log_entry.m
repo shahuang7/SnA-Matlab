@@ -1,1 +1,1 @@
-/home/sna/release/1.0/core/add_log_entry.m
+../../1.0/core/add_log_entry.m
