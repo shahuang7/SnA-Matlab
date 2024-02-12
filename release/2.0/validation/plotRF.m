@@ -1,1 +1,1 @@
-/home/sna/release/1.0/validation/plotRF.m
+../../1.0/validation/plotRF.m

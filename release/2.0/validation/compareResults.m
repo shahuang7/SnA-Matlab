@@ -1,1 +1,1 @@
-/home/sna/release/1.0/validation/compareResults.m
+../../1.0/validation/compareResults.m
