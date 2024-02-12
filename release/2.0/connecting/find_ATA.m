@@ -1,1 +1,1 @@
-/home/sna/release/1.0/connecting/find_ATA.m
+../../1.0/connecting/find_ATA.m

@@ -1,1 +1,1 @@
-/home/sna/release/1.0/connecting/plot_averaged_topos.m
+../../1.0/connecting/plot_averaged_topos.m
