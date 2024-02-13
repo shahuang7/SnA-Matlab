@@ -1,0 +1,66 @@
+function [ cFit, resNorm, residual ] = icofit( psi, varargin )
+
+nE = size( psi, 1 ); % number of eigenfuncs in reconstruction(=iEigsR = 18)
+nD = size( psi, 2 ); % number of data points    (=nR = 1000)
+
+% Parse optional arguments
+%Options.x0 =  reshape( eye( 9, nE ), [ 9 * nE, 1 ] ); % Initial iterate 
+%Options.lb = -1.5 * ones( 81, 1 );            % Lower bound
+%Options.ub =  1.5 * ones( 81, 1 );            % Upper bound
+Options.x0 =  reshape( eye( 7, nE ), [ 7 * nE, 1 ] ); % Initial iterate    % % ???
+Options.lb = -1.5 * ones( 49, 1 );            % Lower bound                % % ???
+Options.ub =  1.5 * ones( 49, 1 );            % Upper bound                % % ???
+
+Options.Display = 'iter';
+Options = parseargs( Options, varargin{ : } );
+Options.PlotFcns = []; 
+
+
+% Constants to be used below
+%id3 = eye( 3 );                 % 3x3 identity matrix
+%iLowTri = [ 1, 2, 3, 5, 6, 9 ]; % linear indices of the lower triangular
+%                                % part of a matrix
+id3 = eye( 7 );                 % 3x3 identity matrix                      % AHZ
+iLowTri = [ 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 17, 18, 19, 20, ...
+            21, 25, 26, 27, 28, 33, 34, 35, 41, 42, 49]; 
+                                % linear indices of the lower triangular   % AHZ
+                                % part of a matrix
+
+
+OptiOptions = optimset( 'Display', Options.Display, 'MaxFunEvals', 1E4 );
+
+[ cFit, resNorm, residual ] = ...
+    lsqnonlin( @f, Options.x0, Options.lb, Options.ub, OptiOptions );
+%cFit = reshape( cFit, [ 9, nE ] );   % size(cFit) = 9  18                
+cFit = reshape( cFit, [ 49, nE ] );   % size(cFit) = 9  18                % AHZ
+
+% Objective function
+
+function v = f( x )
+    
+    %c = reshape( x, [ 9, nE ] );                                         
+    c = reshape( x, [ 49, nE ] );                                         % AHZ
+        
+    v = zeros( 7 * nD, 1 ); % do not contain ref. rotation axis           % ???
+       
+    for iD = 1 : nD
+    
+        % Make a rotation matrix at the current datapoint;
+        r = c * psi( :, iD );
+%         sr = size(r)
+%         sc = size(c)
+%         sp = size(psi(:,iD))
+%         pause
+        %r = reshape( r, [ 3, 3 ] ); 
+        r = reshape( r, [ 7, 7 ] );                                       % AHZ
+        rTr = r' * r - id3;
+        
+        v( ( 1 : 6 ) + ( iD - 1 ) * 7 ) = ...                             % ???
+            rTr( iLowTri )';                    % orthogonality contraint % ??? 
+        v( 7 + ( iD - 1 ) * 7 ) = det( r ) - 1; % handedness constraint   % ???
+
+    end
+    
+end
+
+end
