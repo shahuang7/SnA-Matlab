@@ -24,3 +24,5 @@ scritpEmbedding applies diffusion map;
 cn_dp and nn_dp calculates dot product for Concat-norm and No-norm;
 
 cn_USV extracts topos and chronos, applies for both cn and nn.
+
+$ sbatch matlab.sbatch submits jobs to cluster running nodes, some parameters need change.
